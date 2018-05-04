@@ -3,9 +3,6 @@ var router = express.Router();
 
 var PDFDocument = require('pdfkit');
 
-router.use(bodyParser.urlencoded({ extended: true }));
-router.use(bodyParser.json());
-
 router.get('/pdf', function (req, res) {
 
   // create a document and pipe to a blob
@@ -51,6 +48,10 @@ router.get('/pdf', function (req, res) {
        height: 300,
        ellipsis: true
      });
+
+     doc.addPage()
+
+     doc.text("Otro Texto",100)
 
   doc.pipe(res)
 
